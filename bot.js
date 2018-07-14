@@ -34,6 +34,5 @@ client.on('message', message => {
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
-});
 
 client.login('NDUyMTUwMTk3NzE2Mzg1ODAz.DfMJQA.IdQc87KY6hdoOKwqDXRIfXo0h9w');
