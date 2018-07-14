@@ -1,14 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
- const prefix = "برفكسك";
+ const prefix = "3";
 client.on('ready', () => {
     console.log('I am ready!');
-});
-
-client.on('message', message => {
-    if (message.content === 'zg') {
-        message.reply('pong');
-      }
 });
 
 
