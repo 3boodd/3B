@@ -434,9 +434,6 @@ const zead = [
 });
 
 
-const {Client, RichEmbed} = require('discord.js');
-const client = new Client();
-const fs = require('fs');
 let points = JSON.parse(fs.readFileSync('points.json', 'utf8'));
 client.on('message', message => {
     if (!points[message.author.id]) points[message.author.id] = {points : 0}
