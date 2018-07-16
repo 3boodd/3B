@@ -789,7 +789,7 @@ client.on('message', message => {
   if (!message.content.startsWith(preifx)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== "332982196745011201") return;
+  if (message.author.id !== "430451101402267650") return;
 
 if (message.content.startsWith(preifx + 'setgame')) {
   client.user.setGame(argresult);
@@ -814,7 +814,6 @@ if (message.content.startsWith(preifx + 'setavatar')) {
 });
 
 
-});
 
 
 client.login('NDUyMTUwMTk3NzE2Mzg1ODAz.DfMJQA.IdQc87KY6hdoOKwqDXRIfXo0h9w');
