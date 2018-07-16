@@ -1106,7 +1106,7 @@ client.on('ready',  () => {
 
 
 
-const Discord = require('discord.js');// npm i discord.js
+
 const client = new Discord.Client();
 const id = JSON.parse(fs.readFileSync("./id/mozo.json", "utf8"));
 client.on("message", message => {
