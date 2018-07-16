@@ -815,7 +815,7 @@ if (message.content.startsWith(prefix + 'setavatar')) {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-const Discord = require("discord.js"); // بكج
+
 const bot = new Discord.Client({disableEveryone: true});
 const Canvas = require('canvas') // بكج 
 const fs = module.require("fs"); //بكج
