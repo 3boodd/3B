@@ -1104,7 +1104,7 @@ client.on('ready',  () => {
 
 
 
-const Canvas = require("canvas");//for linux = npm i canvas | for windows = npm i canvas-prebuilt
+
 const jimp = require("jimp");// npm i jimp
 const prefix = "="; // prefix
 const Discord = require('discord.js');// npm i discord.js
