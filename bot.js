@@ -783,7 +783,7 @@ client.on('message', message => {
          }
  })
 
-
+var prefix = "3";
 
 client.on('message', message => {
   if (!message.content.startsWith(preifx)) return;
