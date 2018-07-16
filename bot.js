@@ -784,7 +784,7 @@ client.on('message', message => {
  })
 
 
-  const Discord = require('discord.js');
+
 const PREFIX = "$"
 const KiNg66S = new Discord.Client();
 
