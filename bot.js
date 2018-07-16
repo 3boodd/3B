@@ -816,7 +816,6 @@ if (message.content.startsWith(prefix + 'setavatar')) {
 //////////////////////////////////////////////////////////////////////////////////
 
 
-const fs = require("fs"); // npm i fs
 const Canvas = require("canvas"); //npm i canvas
 const jimp = require("jimp"); //npm i jimp
 const moment = require("moment") //npm i moment
