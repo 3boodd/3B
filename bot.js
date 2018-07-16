@@ -17,13 +17,6 @@ client.on("message", message => {
         ***__General orders__***
 **
 『profile / معلومات عن حسابك』
-『embed / يكرر كلامك بمبيد』
-『server / معلومات عن السيرفر』
-『image / يعرض صوره السيرفر』
-『avatar / يعرض صورتك او صوره شخص』
-『dt / يعرض الوقت في الامارات و مكه المكرمه و مصر و التاريخ』
-لعرض سيرفر المساعده support
-『alarm / يصنع لك منبه』
 『invite  / لدعوة البوت』
 support لسيرفر البوت الاساسي 
 
@@ -31,22 +24,10 @@ support لسيرفر البوت الاساسي
 
         ***__Bot orders__***
 **
-『ping / يعرض لك سرعه اتصال البوت』
 『members / حاله الاعضاء』
 『bot / معلومات عن البوت』
 **
 
-        ***__Administrative Orders__***
-**
-『مسح / مسح روم』』
-『ct /انشاء روم كتابي』
-『cv /انشاء روم صوتي』
-『bc /برودكاست』
-
-
-        ***__Special orders __***
-**
-**
 
         ***__Games orders__***
  **       
@@ -1119,31 +1100,6 @@ message.channel.sendEmbed(embed)
 });
 
 
-client.on('message', message => {
-    if (message.content.startsWith(prefix + 'مسح')) {
-      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ماعندك هذا البرمشن[*MANAGE_MESSAGES*] `).catch(console.error);
-  message.delete()
-  if(!message.channel.guild) return;
-  let args = message.content.split(" ").slice(1);
-  
-  const messagecount = parseInt(args.join(' '));
-  
-  message.channel.fetchMessages({
-  
-  limit: messagecount
-  
-  }).then(messages => message.channel.bulkDelete(messages));
-  message.channel.sendMessage("", {embed: {
-    title: "``✏️✅ تــم مسح الشات ``",
-    color: 0x06DF00,
-    footer: {
-    
-    }
-    }}).then(msg => {msg.delete(3000)});
-  };
-  
-  });
-
 
 client.on('message', message => {
     if (message.content === "3bot") {
@@ -1158,254 +1114,12 @@ message.channel.sendEmbed(embed);
    }
 });
 
-client.on("guildCreate", guild => {
-    client.channels.get("468518466631237642").send(' ***  BOT  ***   **Join To**   ***[ ' + `${guild.name}` + ' ]***   ,   **  Owner  **  ' + ' ***[ ' + '<@' + `${guild.owner.user.id}` + '>' + ' ]***  **|**  ***[ ' + '<' + `${guild.owner.user.username}` + '>' + ' ]***')
-    });
-    
-    client.on("guildDelete", guild => {
-    client.channels.get("468518466631237642").send(' ***  BOT  ***   **Leave From**   ***[ ' + `${guild.name}` + ' ]***   ,   **  Owner  **  ' + ' ***[ ' + '<@' + `${guild.owner.user.id}` + '>' + ' ]***  **|**  ***[ ' + '<' + `${guild.owner.user.username}` + '>' + ' ]***')
-    });
-
-
-client.on('message', message => {
-    var prefix = "3"
-    let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-
-if(command == "3draw") {
-    var Canvas = require('canvas')
-  , Image = new Canvas.Image
-  , canvas = new Canvas(450, 170)
-  , ctx = canvas.getContext('2d');
-  ctx.font = '30px Impact';
-  let args = message.content.split(" ").slice(1);
-  
-Image.src = canvas.toBuffer();
-
-    console.log(Image);
-ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
-ctx.fillText(args.join("  "),110, 70);
-
-
-ctx.beginPath();
-ctx.lineTo(50, 102);
-ctx.stroke();
-
-message.channel.sendFile(canvas.toBuffer());
-}
-}).on('ready', () => {
-
-});
-
-
 
   client.on('message', message => {
 if(message.content.startsWith(prefix + "invite")) { 
 message.author.send(`https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2080374975`);
 }
 });
-
-
-var attentions = {};
-var prefix = '3';
-var times = {
-    "1⃣": "m",
-    "2⃣": "h",
-    "3⃣": "d"
-}
-var times_ms = {
-    "m": 1000 * 60,
-    "h": 1000 * 60 * 60,
-    "d": 1000 * 60 * 60 * 24
-}
-var times_name = {
-    "m": "الدقائق",
-    "h": "الساعات",
-    "d": "الأيام"
-}
-var attentions = {};
-var prefix = '$';
-var times = {
-    "1⃣": "m",
-    "2⃣": "h",
-    "3⃣": "d"
-}
-var times_ms = {
-    "m": 1000 * 60,
-    "h": 1000 * 60 * 60,
-    "d": 1000 * 60 * 60 * 24
-}
-var times_name = {
-    "m": "الدقائق",
-    "h": "الساعات",
-    "d": "الأيام"
-}
-console.log('Alarm Code . By NorElden..');
-client.on('message',( message )=>{
-    if( message.content.startsWith( prefix + 'alarm' ) ){
-        if( attentions[ message.member ] ) {
-            message.channel.send( message.member + ', **:timer: أنتظر قليلاً ريثما يتم أعدادك**').then( (m) =>{
-                m.react('1⃣').then( r1 => {
-                    m.react('2⃣').then( r2 => {
-                        setTimeout(function ( ){
-                            m.edit( message.member +', ** يوجد تذكير مضاف بالفعل, هل تريد حذفه ؟ ** \n**:one: نعم** \n **:two: لا** ' );
-                            m.awaitReactions((reaction, user) => user.id == message.author.id, {time: 60000, maxEmojis: 1})
-                            .then(result => {
-                                var reaction = result.firstKey();
-                                if( reaction == "1⃣" || reaction == "2⃣" ){
-                                    if( reaction == "1⃣" ){
-                                        clearTimeout(attentions[message.member]['timer']);
-                                        attentions[message.member] = undefined;
-                                        m.edit(message.member + '**:white_check_mark: تم حذف التذكير, يمكنك الآن أضافة واحد**');
-                                    } else if( reaction == "2⃣" ){
-                                        m.edit(message.member + '** لن يتم حذف التذكير **')
-                                    }
-                                    m.clearReactions();
-                                }
-                            });
-                        },1000);
-                    });
-                });
-            });
-           
-        } else {
-            attentions[message.member] = { };
-            message.channel.send( message.member + ', **:timer: أنتظر قليلاً ريثما يتم أعدادك**').then( (m) =>{
-                m.edit( message.member + ', **:writing_hand: ماذا تريد ان يكون عنوان التذكير **' )
-                m.channel.awaitMessages( m1 => m1.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m1) => {
-                    m1 = m1.first();
-                    attentions[message.member]['title'] = m1.content;
-                    m1.delete();
-                    m.edit(message.member + ', **:timer: أنتظر قليلاً ريثما يتم أعدادك**').then( (m) =>{
-                        m.edit( message.member + ', **:writing_hand: ماذا تريد ان يكون وصف التذكير **' )
-                        m.channel.awaitMessages( m2 => m2.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m2) => {
-                            m2 = m2.first();
-                            attentions[message.member]['desc'] = m2.content;
-                            m2.delete()
-                            m.edit(message.member + ', **:timer: أنتظر قليلاً ريثما يتم أعدادك**').then( ()=>{
-                                m.react('1⃣').then( r1 => {
-                                    m.react('2⃣').then( r2 => {
-                                        m.react('3⃣').then( r2 => {
-                                            setTimeout(function ( ){
-                                                m.edit(message.member + ', **:writing_hand: حدد موعد التذكير التقريبي**\n **:one: بعد دقائق ** \n **:two: بعد ساعات ** \n **:three: بعد أيام**');
-                                                m.awaitReactions((reaction, user) => user.id == message.author.id, {time: 60000, maxEmojis: 1})
-                                                    .then(result => {
-                                                        var reaction = result.firstKey();
-                                                        if( reaction == "1⃣" || reaction == "2⃣" || reaction == "3⃣" ){
-                                                            attentions[message.member]['time'] = times_ms[times[reaction]];
-                                                            m.edit(message.member + ', **:timer: أنتظر قليلاً ريثما يتم أعدادك**').then ( ( ) =>{
-                                                            m.clearReactions().then( () =>{
-                                                                m.edit(message.member + ', **:timer: اذكر عدد '+times_name[times[reaction]]+'**' )
-                                                                    m.channel.awaitMessages( m3 => m3.author == message.author && !isNaN(m3.content),{ maxMatches: 1, time: 60*1000 } ).then ( (m3) => {
-                                                                        m3 = m3.first();
-                                                                        attentions[message.member]['time_num'] = m3.content;
-                                                                        m3.delete();
-                                                                        attentions[message.member]['timer'] = setTimeout(function( ){
-                                                                            message.member.send('** '+message.member+' تذكير !! **')
-                                                                            var embed = new Discord.RichEmbed( );
-                                                                            embed.setTitle( attentions[message.member]['title'] );
-                                                                            embed.setDescription( attentions[message.member]['desc'] );
-                                                                            embed.setTimestamp();
-                                                                            message.member.send({embed});
-                                                                            message.member.send('** '+message.member+' تذكير !! **')
-                                                                        }, attentions[message.member]['time_num'] * attentions[message.member]['time'] );
-                                                                       
-                                                                        message.reply('** :white_check_mark: تم أضافة التذكير, سيتم تذكيرك لاحقاً **');
-                                                                        m.delete();
-                                                                        message.delete();
-                                                                    }).catch(function(){ m.delete( ); attentions[message.member] = undefined; } );
-                                                                });
-                                                            });
-                                                        }
-                                                    });
-                                            },1000);
-                                        });
-                                    });
-                                });
-                            }).catch(function() { m.delete();attentions[message.member] = undefined;  });
-                        }).catch(function() { m.delete(); attentions[message.member] = undefined;  });
-                    });
-                   
-                }).catch(function( ) {m.delete(); attentions[message.member] = undefined; });
-            });
-        }
-    }
-});
-
-
-client.on('message', message => {
-if (message.content.startsWith('السلام عليكم')){
-     let ra3d = new Discord.RichEmbed()
-  .setAuthor(message.author.username)
-  .setColor("00FF00")
-  .setDescription(":rose:  :sparkles: وعليكم ● السَلٱمٌ ● عـَلـْيگمّ-● ۈرحـْمّـٌة ● ٱللـّہ ● ﯙبُرگـّاتہ :sparkles: :rose: ")
-     
-     
-  message.channel.sendEmbed(ra3d);
-    }
-});
-
-
-
-    client.on('message', message => {
-        var prefix = "3";
-        if (message.author.bot) return;
-        if (!message.content.startsWith(prefix)) return;
-      
-        let command = message.content.split(" ")[0];
-        command = command.slice(prefix.length);
-      
-      
-      let args = message.content.split(" ").slice(1);
-      let x = args.join(" ")
-        if(message.content.startsWith(prefix + 'say')) {
-            message.channel.send(''+x);
-                message.delete(999)
-        }
-        
-       
-      });
-
-
-
-client.on('message', message => {
-        if (message.author.id === client.user.id) return;
-        if (message.guild) {
-       let embed = new Discord.RichEmbed()
-        let args = message.content.split(' ').slice(1).join(' ');
-    if(message.content.split(' ')[0] == prefix + 'bc') {
-        if (!args[1]) {
-    message.channel.send("**.bc <message>**");
-    return;
-    }
-            message.guild.members.forEach(m => {
-       if(!message.member.hasPermission('ADMINISTRATOR')) return;
-                var bc = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .addField('** الـسيرفر**', `${message.guild.name}`,true)
-                .addField(' **الـمرسل **', `${message.author.username}#${message.author.discriminator}`,true)
-                .addField(' **الرسالة** ', args)
-                .setThumbnail(message.guild.iconURL)
-                .setColor('RANDOM')
-                m.send(`${m}`,{embed: bc});
-            });
-            const AziRo = new Discord.RichEmbed()
-            .setAuthor(message.author.username, message.author.avatarURL)   
-            .setTitle('✔️ | جاري ارسال رسالتك ') 
-            .addBlankField(true)
-            .addField('👥 | عدد الاعضاء المرسل لهم ', message.guild.memberCount , true)        
-            .addField('📋| الرسالة ', args)
-            .setColor('RANDOM')  
-            message.channel.sendEmbed(AziRo);          
-        }
-        } else {
-            return;
-        }
-});
-
 
 
 
