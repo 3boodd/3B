@@ -815,9 +815,10 @@ if (message.content.startsWith(prefix + 'setavatar')) {
 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-const bot = new Discord.Client({disableEveryone: false});
-const Canvas = require('canvas') // بكج بكج
+const Discord = require("discord.js"); // بكج
+const bot = new Discord.Client({disableEveryone: true});
+const Canvas = require('canvas') // بكج 
+const fs = module.require("fs"); //بكج
 const r1 = require('snekfetch'); //بكج
 
 
@@ -981,6 +982,7 @@ if (message.content.startsWith("3profile")) { // الامر
 
 
 });
+
 
 
 
