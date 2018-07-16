@@ -1107,7 +1107,7 @@ client.on('ready',  () => {
 
 
 
-const client = new Discord.Client();
+const Client = new Discord.Client();
 const id = JSON.parse(fs.readFileSync("./id/mozo.json", "utf8"));
 client.on("message", message => {
   if (message.author.bot) return;
