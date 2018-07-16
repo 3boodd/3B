@@ -1105,8 +1105,7 @@ client.on('ready',  () => {
 
 
 
-const jimp = require("jimp");// npm i jimp
-const prefix = "="; // prefix
+const prefix = "3"; // prefix
 const Discord = require('discord.js');// npm i discord.js
 const client = new Discord.Client();
 const id = JSON.parse(fs.readFileSync("./id/mozo.json", "utf8"));
