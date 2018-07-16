@@ -5,7 +5,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-var prefix ="3";
+var prefix = "3";
 
 client.on("message", message => {
  if (message.content === "3help") {
