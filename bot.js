@@ -816,4 +816,5 @@ message.author.send(`https://discordapp.com/oauth2/authorize?client_id=${client.
 
 
 
-client.login('NDUyMTUwMTk3NzE2Mzg1ODAz.DfMJQA.IdQc87KY6hdoOKwqDXRIfXo0h9w');
+
+client.login(process.env.BOT_TOKEN);  //اياكككك تلعب هنا لا تحط توكنك هنا 
